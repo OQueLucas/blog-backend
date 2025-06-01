@@ -1,0 +1,21 @@
+# application-bifrost.yml
+#
+# Bifrost: A famosa ponte mágica que une os ambientes.
+# Configurações compartilhadas para facilitar sua vida e evitar drama.
+# Porque configurar tudo separado dá trabalho e ninguém quer drama no deploy.
+
+spring:
+  application:
+    name: blog
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: UTC
