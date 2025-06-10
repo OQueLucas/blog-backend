@@ -1,6 +1,8 @@
 package com.oquelucas.blog.usecase.post.search;
 
+import com.oquelucas.blog.domain.post.Category;
 import com.oquelucas.blog.domain.post.Post;
+import com.oquelucas.blog.domain.post.Tag;
 import com.oquelucas.blog.dto.AuthorDto;
 
 import java.time.OffsetDateTime;
@@ -25,8 +27,8 @@ public record SearchPostResponse(
                 post.getExcerpt(),
                 post.getCreatedAt(),
                 AuthorDto.from(post.getAuthor()),
-                post.getCategories(),
-                post.getTags(),
+                post.getCategories().stream().map(Category::getName).toList(),
+                post.getTags().stream().map(Tag::getName).toList(),
                 post.getComments() != null ? post.getComments().size() : 0
         );
     }
