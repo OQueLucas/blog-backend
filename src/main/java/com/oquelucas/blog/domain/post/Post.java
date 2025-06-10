@@ -37,15 +37,21 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 
-    @ElementCollection
-    @CollectionTable(name = "post_categories", joinColumns = @JoinColumn(name = "post_id"))
-    @Column(name = "category")
-    private List<String> categories = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "post_categories",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories = new ArrayList<>();
 
-    @ElementCollection
-    @CollectionTable(name = "post_tags", joinColumns = @JoinColumn(name = "post_id"))
-    @Column(name = "tag")
-    private List<String> tags = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "post_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags = new ArrayList<>();
 
     public Post(OffsetDateTime createdAt, String title, String content, String excerpt, User author) {
         this.createdAt = createdAt;

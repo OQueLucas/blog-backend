@@ -1,7 +1,9 @@
 package com.oquelucas.blog.usecase.post.find;
 
+import com.oquelucas.blog.domain.post.Category;
 import com.oquelucas.blog.domain.post.Comment;
 import com.oquelucas.blog.domain.post.Post;
+import com.oquelucas.blog.domain.post.Tag;
 import com.oquelucas.blog.dto.AuthorDto;
 
 import java.time.OffsetDateTime;
@@ -26,8 +28,8 @@ public record FindPostByIdResponse(
                 post.getContent(),
                 post.getCreatedAt(),
                 AuthorDto.from(post.getAuthor()),
-                List.copyOf(post.getCategories() != null ? post.getCategories() : List.of()),
-                List.copyOf(post.getTags() != null ? post.getTags() : List.of()),
+                List.copyOf(post.getCategories() != null ? post.getCategories().stream().map(Category::getName).toList() : List.of()),
+                List.copyOf(post.getTags() != null ? post.getTags().stream().map(Tag::getName).toList() : List.of()),
                 post.getComments().stream()
                         .map(CommentResponse::from)
                         .toList()

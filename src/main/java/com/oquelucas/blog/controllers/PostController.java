@@ -1,11 +1,9 @@
 package com.oquelucas.blog.controllers;
 
-import com.oquelucas.blog.usecase.post.comment.add.AddCommentRequest;
 import com.oquelucas.blog.usecase.post.find.FindPostByIdResponse;
-import com.oquelucas.blog.usecase.post.search.SearchPostResponse;
-import com.oquelucas.blog.usecase.post.comment.add.AddCommentUseCase;
-import com.oquelucas.blog.usecase.post.search.SearchPostUseCase;
 import com.oquelucas.blog.usecase.post.find.FindPostByIdUseCase;
+import com.oquelucas.blog.usecase.post.search.SearchPostResponse;
+import com.oquelucas.blog.usecase.post.search.SearchPostUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
